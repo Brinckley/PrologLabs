@@ -1,0 +1,40 @@
+
+logicalnot("Чук", "Гек").
+logicalnot("Гек", "Чук").
+
+truth("Чук", 1, false).
+truth("Чук", 2, false).
+truth("Чук", 3, false).
+truth("Чук", 4, true).
+truth("Чук", 5, true).
+truth("Чук", 6, true).
+truth("Чук", 7, true).
+
+truth("Гек", 1, true).
+truth("Гек", 2, false).
+truth("Гек", 3, true).
+truth("Гек", 4, false).
+truth("Гек", 5, true).
+truth("Гек", 6, false).
+truth("Гек", 7, true).
+
+pair(7, 1).
+pair(N, N + 1).
+
+sayname(Person, true) :- Person = "Чук".
+sayname(Person, false) :- not(Person = "Чук").
+
+sayyesterday(Today, Yesterday, true) :- pair(Yesterday, Today).
+sayyesterday(Today, Yesterday, false) :- not(pair(Yesterday, Today)).
+
+saytomorrow(Today, Tomorrow, true) :- pair(Today, Tomorrow).
+saytomorrow(Today, Tomorrow, false) :- not(pair(Today, Tomorrow)).
+
+solve :- truth(Sp1, Today, Res1), logicalnot(Sp1, Sp2), truth(Sp2, Today, Res2),
+         sayname(Sp1, Res1), sayyesterday(Today, 7, Res1), saytomorrow(Today, 5, Res2), truth(Sp2, 3, Res2),
+         write('First: '), write(Sp1), nl, write('Second: '), write(Sp2), nl, write('Today: '), write(Today), nl, !.
+
+?-solve.
+
+
+

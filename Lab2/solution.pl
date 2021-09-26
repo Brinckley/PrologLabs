@@ -1,0 +1,51 @@
+%Может быть, вы и не поверите, но в одном городке жили два чудака: Чук и Гек.
+%Чук совершенно не мог говорить правду по понедельникам, вторникам и средам, хотя в остальные дни он неизменно был правдив.
+%А Гек врал по вторникам, четвергам и субботам, но в другие дни он говорил только правду.
+%Как-то я повстречал эту неразлучную пару и спросил одного из них: Скажи пожалуйста, как тебя зовут?
+%Тот без малейшего колебания ответил: Чук. А скажи-ка мне, какой сегодня день недели?
+%Вчера было воскресенье,сказал мой собеседник. А завтра будет пятница,- добавил его приятель.
+%Подожди, как же так? изумился я, обращаясь к приятелю моего собеседника.Ты уверен, что говоришь правду? Я всегда говорю правду по средам,- услышал я в ответ.
+%Решив, что больше со мной говорить не о чем, приятели пошли дальше, оставив меня в полном недоумении.
+%Но, подумав, я все-таки сообразил, кто из двух друзей был Чук, а кто Гек.
+%Между прочим, по разговору можно установить и день недели, в который я встретился с ними.
+%Попробуйте сообразить и вы.
+
+logicalnot("Чук", "Гек").
+logicalnot("Гек", "Чук").
+
+truth("Чук", 1, false).
+truth("Чук", 2, false).
+truth("Чук", 3, false).
+truth("Чук", 4, true).
+truth("Чук", 5, true).
+truth("Чук", 6, true).
+truth("Чук", 7, true).
+
+truth("Гек", 1, true).
+truth("Гек", 2, false).
+truth("Гек", 3, true).
+truth("Гек", 4, false).
+truth("Гек", 5, true).
+truth("Гек", 6, false).
+truth("Гек", 7, true).
+
+pair(7, 1).
+pair(N, N + 1).
+
+sayname(Person, true) :- Person = "Чук".
+sayname(Person, false) :- not(Person = "Чук").
+
+sayyesterday(Today, Yesterday, true) :- pair(Yesterday, Today).
+sayyesterday(Today, Yesterday, false) :- not(pair(Yesterday, Today)).
+
+saytomorrow(Today, Tomorrow, true) :- pair(Today, Tomorrow).
+saytomorrow(Today, Tomorrow, false) :- not(pair(Today, Tomorrow)).
+
+solve :- truth(Sp1, Today, Res1), logicalnot(Sp1, Sp2), truth(Sp2, Today, Res2),
+         sayname(Sp1, Res1), sayyesterday(Today, 7, Res1), saytomorrow(Today, 5, Res2), truth(Sp2, 3, Res2),
+         write('Speaker1: '), write(Sp1), nl, write('Speaker 2: '), write(Sp2), nl, write('Today: '), write(Today), nl, !.
+
+?-solve.
+
+
+
