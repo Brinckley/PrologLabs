@@ -41,11 +41,16 @@ sayyesterday(Today, Yesterday, false) :- not(pair(Yesterday, Today)).
 saytomorrow(Today, Tomorrow, true) :- pair(Today, Tomorrow).
 saytomorrow(Today, Tomorrow, false) :- not(pair(Today, Tomorrow)).
 
+writeanswer(Sp1, Sp2, Today) :- write('Speaker1: '), write(Sp1), nl, write('Speaker 2: '), write(Sp2), nl, write('Today: '), write(Today), nl.
+
 solve :- truth(Sp1, Today, Res1), logicalnot(Sp1, Sp2), truth(Sp2, Today, Res2),
-         sayname(Sp1, Res1), sayyesterday(Today, 7, Res1), saytomorrow(Today, 5, Res2), truth(Sp2, 3, Res2),
-         write('Speaker1: '), write(Sp1), nl, write('Speaker 2: '), write(Sp2), nl, write('Today: '), write(Today), nl, !.
+         sayname(Sp1, Res1), sayyesterday(Today, 7, Res1), saytomorrow(Today, 5, Res2), truth(Sp2, 3, Res2), writeanswer(Sp1,Sp2,Today),!.
 
 ?-solve.
+% Ответ:
+%Speaker1: Гек
+%Speaker 2: Чук
+%Today: 2
 
 
 
