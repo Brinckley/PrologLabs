@@ -1,4 +1,4 @@
-Length([], 0).
+length([], 0).
 length([_|Y], N) :- length(Y, N1), N is N1 + 1.
 
 member(A, [A|_]).
@@ -35,7 +35,7 @@ deletelast([X|T],[X|Tnew]) :- deletelast(T, Tnew).
 %With standard
 
 %Without standard
-Counteven([], 0).
+counteven([], 0).
 counteven([X|T], N) :- counteven(T, N1), checkeven(X, 0, R), N is N1 + R.
 
 checkeven(1, S, S).
