@@ -128,6 +128,5 @@ daughter(X, Y) :- child(Y, X), female(Y).
 mother(X, Y) :- child(Y, X), female(Y).
 father(X, Y) :- child(Y, X), male(Y).
 
-
-
+SisterInLaw(X, Y) :- husband(X, Z), sister(Y, Z).
 
