@@ -118,7 +118,7 @@ checkeven(X, S, N) :- X1 is X - 2, checkeven(X1, S, N).
 
 Список литературы
 -----------------
-Википедия: Логическое программирование - https://ru.wikipedia.org/wiki/Логическое_программирование
-Википедия: Пролог (язык программирования) - https://ru.wikipedia.org/wiki/Пролог_(язык_программирования)
-Слышали о языке Prolog? - https://habr.com/en/company/ruvds/blog/525014/
-Prolog — удивительный язык программирования - https://habr.com/ru/post/124636/
+Википедия: Логическое программирование - https://ru.wikipedia.org/wiki/Логическое_программирование  
+Википедия: Пролог (язык программирования) - https://ru.wikipedia.org/wiki/Пролог_(язык_программирования)  
+Слышали о языке Prolog? - https://habr.com/en/company/ruvds/blog/525014/  
+Prolog — удивительный язык программирования - https://habr.com/ru/post/124636/  
